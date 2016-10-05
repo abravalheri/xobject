@@ -3,6 +3,7 @@
 *.py[cod]
 *.so
 *.cfg
+!.isort.cfg
 !setup.cfg
 *.orig
 *.log
@@ -12,6 +13,7 @@ __pycache__/*
 .*.swp
 
 # Project files
+.python-version
 .ropeproject
 .project
 .pydevproject

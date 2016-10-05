@@ -1,5 +1,5 @@
 -   repo: git://github.com/pre-commit/pre-commit-hooks
-    sha: v0.4.2
+    sha: v0.6.0
     hooks:
     -   id: trailing-whitespace
     -   id: check-ast
@@ -14,7 +14,29 @@
         args: ["--exclude=docs/conf.py"]
 
 -   repo: git://github.com/FalconSocial/pre-commit-python-sorter
-    sha: 1.0.1
+    sha: 1.0.4
     hooks:
     -   id: python-import-sorter
-        args: ['--silent-overwrite']
+    args: ['--check-only', '--diff']
+
+-   repo: local
+    hooks:
+    -   id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        files: ^(xobject|tests).*\.py$
+
+-   repo: local
+    hooks:
+    -   id: pytest
+        name: pytest
+        entry: py.test
+        language: system
+        files: ^(xobject|tests).*\.py$
+        args:
+        - --cov=xobject
+        - --cov-report=term-missing
+        - --verbose
+        - --pep257
+        - tests/
